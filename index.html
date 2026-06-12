@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Portal do Amor Anos 2000 💖</title>
+    <style>
+        body {
+            background-color: #ffd1dc; 
+            background-image: url('https://i.pinimg.com/originals/7f/39/1e/7f391e2e0e0ad709c8f9a23743fe1d53.gif'); 
+            background-repeat: repeat;
+            font-family: "Courier New", Courier, monospace;
+            color: #800020; 
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Efeito do mouse */
+        .rastro-coracao {
+            position: absolute;
+            font-size: 14px;
+            pointer-events: none;
+            animation: cair 1s linear forwards;
+            z-index: 9999;
+        }
+
+        @keyframes cair {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(30px) scale(0.5); opacity: 0; }
+        }
+
+        /* Caixa Principal do Site */
+        .container {
+            background-color: rgba(255, 255, 255, 0.95); 
+            border: 4px double #800020;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 0 0 20px 0; /* Remove padding do topo para o banner colar na borda */
+            box-shadow: 10px 10px 0px #800020;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Banner do Topo */
+        .banner-topo {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-bottom: 4px double #800020;
+        }
+
+        .conteudo-titulo {
+            padding: 15px 20px 0 20px;
+        }
+
+        h1 {
+            color: #800020;
+            text-shadow: 2px 2px #ffb6c1;
+            font-size: 26px;
+            margin: 10px 0 5px 0;
+        }
+
+        /* --- LAYOUT ALINHADO E DINÂMICO DAS ABAS --- */
+        .Abas-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            gap: 6px;
+            max-width: 95%;
+            padding: 0 10px;
+        }
+
+        .aba-btn {
+            background-color: #ffb6c1;
+            color: #800020;
+            border: 2px solid #800020;
+            padding: 8px 0;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+            flex: 1;
+            min-width: 105px; /* Alinhamento dinâmico sem quebrar o grid */
+            max-width: 115px;
+            text-align: center;
+            box-sizing: border-box;
+            box-shadow: 2px 2px 0px #800020;
+        }
+
+        .aba-btn.ativa {
+            background-color: #800020;
+            color: white;
+            box-shadow: none;
+            transform: translate(2px, 2px);
+        }
+
+        .conteudo-guia {
+            display: none;
+            min-height: 280px;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+
+        .conteudo-guia.ativa {
+            display: block;
+        }
+
+        /* Elementos de Formulário Padronizados */
+        input[type="text"], textarea, select {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #800020;
+            background-color: #fff;
+            color: #800020;
+            font-weight: bold;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        select {
+            text-align-last: center;
+            cursor: pointer;
+        }
+
+        button.acao-btn {
+            background-color: #800020;
+            color: white;
+            border: 2px solid #ffb6c1;
+            padding: 10px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 4px 4px 0px #ffb6c1;
+        }
+
+        button.acao-btn:hover {
+            background-color: #ffb6c1;
+            color: #800020;
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .caixa-resultado {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .bilhete {
+            background-color: #fff0f5;
+            border: 2px dashed #800020;
+            padding: 15px;
+            margin-top: 15px;
+            display: inline-block;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        /* Mural de Recados */
+        .mural-caixa {
+            border: 2px inset #800020;
+            background: #fff;
+            height: 150px;
+            overflow-y: scroll;
+            margin-top: 15px;
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .recado-item {
+            border-bottom: 1px dotted #ffb6c1;
+            padding: 5px 0;
+        }
+
+        /* Quiz */
+        .pergunta-quiz {
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .pergunta-quiz p {
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+
+        .gif-final {
+            max-width: 150px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img class="banner-topo" src="https://i.pinimg.com/1200x/22/ad/6a/22ad6ac7a3c6d50cc9d253c8d9a42290.jpg" alt="Banner Romântico Retrô">
+
+        <div class="conteudo-titulo">
+            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXN6ZnN5Z3d4ZXF0YjJ5cmNxZHZ4NDN5YjF5M2N0ZzZ0Znd2cm12M28mZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXN/3oriO0OEd9QIDdllqo/giphy.gif" height="40" alt="Cupido">
+            <h1>✨ Portal do Amor 2000 ✨</h1>
+            <p class="blink" style="color: red; font-weight: bold; margin: 0;">~* Seu ponto de encontro romântico na web *~</p>
+        </div>
+
+        <div class="Abas-menu">
+            <button class="aba-btn ativa" onclick="abrirGuia('calculadora', this)">💘Calculadora</button>
+            <button class="aba-btn" onclick="abrirGuia('biscoito', this)">🥠Biscoito</button>
+            <button class="aba-btn" onclick="abrirGuia('correio', this)">💌Correio</button>
+            <button class="aba-btn" onclick="abrirGuia('quiz', this)">🔮Teste Love</button>
+            <button class="aba-btn" onclick="abrirGuia('mural', this)">💬Mural</button>
+        </div>
+
+        <hr style="border: 1px dashed #800020; margin: 0 20px;">
+
+        <div id="calculadora" class="conteudo-guia ativa">
+            <h3>🏹 Medidor de Compatibilidade 🏹</h3>
+            <label for="nome1">Seu Nome:</label><br>
+            <input type="text" id="nome1" placeholder="Ex: Maria"><br>
+            <label for="nome2">Nome do @:</label><br>
+            <input type="text" id="nome2" placeholder="Ex: João"><br>
+            <button class="acao-btn" onclick="calcularAmor()">Calcular Chance %</button>
+            <div id="res-calculadora" class="caixa-resultado"></div>
+        </div>
+
+        <div id="biscoito" class="conteudo-guia">
+            <h3>🥠 Biscoito da Sorte Amoroso 🥠</h3>
+            <p>Clique para quebrar o biscoito e ler o destino!</p>
+            <button class="acao-btn" onclick="abrirBiscoito()">Abrir Biscoito 🥠</button>
+            <div id="res-biscoito" class="caixa-resultado"></div>
+        </div>
+
+        <div id="correio" class="conteudo-guia">
+            <h3>💌 Enviar Correio Elegante 💌</h3>
+            <label for="de">De:</label><br>
+            <input type="text" id="de" placeholder="Ex: Admirador Secreto"><br>
+            <label for="para">Para:</label><br>
+            <input type="text" id="para" placeholder="Ex: Gatinho(a) da Sala"><br>
+            <label for="mensagem">Mensagem:</label><br>
+            <textarea id="mensagem" rows="2" placeholder="Escreva algo fofo..."></textarea><br>
+            <button class="acao-btn" onclick="gerarCorreio()">Gerar Bilhetinho</button>
+            <div id="res-correio" class="caixa-resultado"></div>
+        </div>
+
+        <div id="quiz" class="conteudo-guia">
+            <h3>🔮 Quiz: Descubra Sua Linguagem do Amor 🔮</h3>
+            <p style="font-size: 12px;">Responda pensando nas suas reações mais sinceras do dia a dia!</p>
+            
+            <div class="pergunta-quiz">
+                <p>1. O que mais te deixa com um sorriso bobo depois de um dia cansativo?</p>
+                <select id="q1">
+                    <option value="A">Receber uma mensagem inesperada dizendo o quanto sou especial.</option>
+                    <option value="B">Chegar em casa e ver que ganhei meu doce ou lanchinho favorito.</option>
+                    <option value="C">Poder sentar junto com a pessoa e conversar sem mexer no celular.</option>
+                    <option value="D">Descobrir que a pessoa lavou a louça ou arrumou algo para me poupar tempo.</option>
+                    <option value="E">Ganhar aquele abraço longo e apertado logo na hora que eu chego.</option>
+                </select>
+            </div>
+
+            <div class="pergunta-quiz">
+                <p>2. Seu namoro ou ficada dos sonhos precisa ter muito de qual dessas coisas?</p>
+                <select id="q2">
+                    <option value="A">Elogios constantes e apoio mútuo nos planos e sonhos de vida.</option>
+                    <option value="B">Pequenos mimos guardados e detalhes que mostram que lembram de mim.</option>
+                    <option value="C">Encontros tranquilos e caminhadas onde o foco é apenas a companhia.</option>
+                    <option value="D">Parceria real na rotina, dividindo tarefas e obrigações sem reclamar.</option>
+                    <option value="E">Andar de mãos dadas, cafuné no sofá e muita proximidade física.</option>
+                </select>
+            </div>
+
+            <div class="pergunta-quiz">
+                <p>3. Se você pudesse planejar a surpresa perfeita para o seu par, o que faria?</p>
+                <select id="q3">
+                    <option value="A">Escreveria uma carta super profunda expressando tudo o que sinto.</option>
+                    <option value="B">Compraria ou faria algo manual que a pessoa estava querendo há meses.</option>
+                    <option value="C">Reservaria um dia inteiro livre para fazermos uma viagem curta só nós dois.</option>
+                    <option value="D">Cuidaria de alguma pendência chata ou limparia o espaço dela antes de chegar.</option>
+                    <option value="E">Prepararia um clima aconchegante para ficarmos bem colados assistindo a um filme.</option>
+                </select>
+            </div>
+
+            <div class="pergunta-quiz">
+                <p>4. Qual destas atitudes do outro mais machucaria ou esfriaria seus sentimentos?</p>
+                <select id="q4">
+                    <option value="A">Irritação ou palavras duras de crítica sobre meus defeitos.</option>
+                    <option value="B">Passarem datas marcantes sem nenhuma lembrancinha ou cartão.</option>
+                    <option value="C">Sentir que a pessoa está distante ou distraída quando estamos juntos.</option>
+                    <option value="D">Falta de interesse em me apoiar ou ajudar quando estou sobrecarregado(a).</option>
+                    <option value="E">Falta de intimidade, distância corporal ou rejeição aos meus carinhos.</option>
+                </select>
+            </div>
+
+            <div class="pergunta-quiz">
+                <p>5. Quando você repara que alguém te ama de verdade? Quando a pessoa...</p>
+                <select id="q5">
+                    <option value="A">Me diz claramente o orgulho que sente de me ter por perto.</option>
+                    <option value="B">Me traz um souvenir de uma viagem mostrando que se lembrou de mim.</option>
+                    <option value="C">Cria um momento especial na agenda lotada dela só para me ver.</option>
+                    <option value="D">Se oferece voluntariamente para me ajudar em uma tarefa complicada.</option>
+                    <option value="E">Procura o toque, encosta a cabeça no meu ombro ou segura minha mão.</option>
+                </select>
+            </div>
+
+            <button class="acao-btn" onclick="calcularQuiz()">Ver Meu Resultado ✨</button>
+            <div id="res-quiz" class="caixa-resultado"></div>
+        </div>
+
+        <div id="mural" class="conteudo-guia">
+            <h3>💬 Mural de Recados do Portal 💬</h3>
+            <input type="text" id="mural-nome" placeholder="Seu apelido..."><br>
+            <input type="text" id="mural-texto" placeholder="Deixe um Alô ou Recadinho..."><br>
+            
+            <div style="margin: 5px 0;">
+                <button class="aba-btn" style="width:50px; min-width:50px; padding:4px 0; margin:0 2px; box-shadow:1px 1px 0 #800020;" onclick="adicionarRecado('💖')">💖</button>
+                <button class="aba-btn" style="width:50px; min-width:50px; padding:4px 0; margin:0 2px; box-shadow:1px 1px 0 #800020;" onclick="adicionarRecado('[:D]')">[:D]</button>
+                <button class="aba-btn" style="width:50px; min-width:50px; padding:4px 0; margin:0 2px; box-shadow:1px 1px 0 #800020;" onclick="adicionarRecado('[(K)]')">[(K)]</button>
+                <button class="aba-btn" style="width:50px; min-width:50px; padding:4px 0; margin:0 2px; box-shadow:1px 1px 0 #800020;" onclick="adicionarRecado('[=(]')">[=(]</button>
+            </div>
+            
+            <button class="acao-btn" onclick="postarNoMural()">Postar no Mural ✨</button>
+            
+            <div class="mural-caixa" id="mural-lista">
+                <div class="recado-item"><strong>Cupido_2000:</strong> Deixem suas mensagens de amor aqui galera! [(K)]</div>
+                <div class="recado-item"><strong>Aninha_S2:</strong> Alguém online?? Adicionei novos gifs no meu perfil! 💖</div>
+            </div>
+        </div>
+
+        <hr style="border: 1px dashed #800020; margin: 20px 20px 0 20px;">
+        <div>
+            <img class="gif-final" src="https://i.pinimg.com/originals/a7/72/5d/a7725dcb15f32be8a0c6011788fd527f.gif" alt="Corações Piscando">
+        </div>
+    </div>
+
+    <script>
+        // --- 1. EFEITO DE RASTRO DO MOUSE ---
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.15) return; 
+            let coracao = document.createElement('span');
+            coracao.className = 'rastro-coracao';
+            const simbolos = ['💖', '♥', '💋', '✨'];
+            coracao.innerText = simbolos[Math.floor(Math.random() * simbolos.length)];
+            coracao.style.left = e.pageX + 'px';
+            coracao.style.top = e.pageY + 'px';
+            document.body.appendChild(coracao);
+            setTimeout(() => { coracao.remove(); }, 1000);
+        });
+
+        // --- SISTEMA DE ABAS ---
+        function abrirGuia(idGuia, botaoClicado) {
+            let guias = document.getElementsByClassName("conteudo-guia");
+            for (let i = 0; i < guias.length; i++) guias[i].classList.remove("ativa");
+
+            let botoes = document.getElementsByClassName("aba-btn");
+            for (let i = 0; i < botoes.length; i++) {
+                if(botoes[i].style.width !== "50px") { // Protege os botões pequenos do mural
+                    botoes[i].classList.remove("ativa");
+                }
+            }
+
+            document.getElementById(idGuia).classList.add("ativa");
+            botaoClicado.classList.add("ativa");
+        }
+
+        // --- LÓGICA CALCULADORA ---
+        function calcularAmor() {
+            let nome1 = document.getElementById('nome1').value.trim();
+            let nome2 = document.getElementById('nome2').value.trim();
+            if (nome1 === "" || nome2 === "") { alert("Insira os dois nomes!"); return; }
+
+            let combinacao = nome1.toLowerCase() + nome2.toLowerCase();
+            let soma = 0;
+            for (let i = 0; i < combinacao.length; i++) soma += combinacao.charCodeAt(i);
+            let porcentagem = (soma % 61) + 40; 
+
+            let msg = porcentagem < 65 ? "💔 Vibe de melhores amigos! Quem sabe no futuro?" :
+                      porcentagem < 85 ? "🔥 Rola uma química forte aí, hein! Manda uma indireta." : 
+                      "👩‍❤️‍👨 DESTINO! O cupido usou hack com vocês dois! 💖";
+
+            document.getElementById('res-calculadora').innerHTML = `
+                <p style="font-size: 32px; color: red;" class="blink">${porcentagem}%</p>
+                <p>${msg}</p>
+            `;
+        }
+
+        // --- LÓGICA BISCOITO ---
+        function abrirBiscoito() {
+            const frases = [
+                "✨ Alguém que você vê todo dia está pensando em você em segredo.",
+                "✨ Um depoimento inesperado vai alegrar sua semana.",
+                "✨ Pare de dar corda para quem não te valoriza, o cupido tem planos melhores!",
+                "✨ Um olhar vale mais que mil palavras. Preste atenção nas indiretas!",
+                "✨ O amor está mais perto do que você imagina. Olhe para o lado!"
+            ];
+            let indice = Math.floor(Math.random() * frases.length);
+            document.getElementById('res-biscoito').innerHTML = `
+                <div class="bilhete">
+                    <p style="color: #ff0055; font-style: italic;">"${frases[indice]}"</p>
+                    <small>🍀 Números da Sorte: ${Math.floor(Math.random()*90+10)} - ${Math.floor(Math.random()*90+10)}</small>
+                </div>
+            `;
+        }
+
+        // --- LÓGICA CORREIO ELEGANTE ---
+        function gerarCorreio() {
+            let de = document.getElementById('de').value.trim() || "Anônimo";
+            let para = document.getElementById('para').value.trim();
+            let mensagem = document.getElementById('mensagem').value.trim();
+            if (para === "" || mensagem === "") { alert("Preencha o destinatário e a mensagem!"); return; }
+
+            document.getElementById('res-correio').innerHTML = `
+                <div class="bilhete" style="background-color: #fff; border: 3px double red;">
+                    <p><strong>De:</strong> ${de} | <strong>Para:</strong> ${para}</p>
+                    <p style="background: yellow; display: inline-block; padding: 5px;">💘 ${mensagem} 💘</p>
+                </div>
+            `;
+        }
+
+        // --- LÓGICA QUIZ ---
+        function calcularQuiz() {
+            let respostas = [
+                document.getElementById('q1').value,
+                document.getElementById('q2').value,
+                document.getElementById('q3').value,
+                document.getElementById('q4').value,
+                document.getElementById('q5').value
+            ];
+
+            let contagem = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+            respostas.forEach(r => contagem[r]++);
+
+            let vencedor = 'A';
+            for (let chave in contagem) {
+                if (contagem[chave] > contagem[vencedor]) {
+                    vencedor = chave;
+                }
+            }
+
+            let titulo = "";
+            let desc = "";
+
+            if (vencedor === 'A') {
+                titulo = "🗣️ Palavras de Afirmação";
+                desc = "Você se sente muito amado(a) quando recebe elogios, declarações sinceras e palavras de incentivo. O amor para você entra pelos ouvidos e pelo coração!";
+            } else if (vencedor === 'B') {
+                titulo = "🎁 Presentes";
+                desc = "Para você, presentes e pequenas lembranças significam que a pessoa parou o dia dela para pensar em você. Você valoriza muito o gesto visual e físico do carinho!";
+            } else if (vencedor === 'C') {
+                titulo = "⏳ Tempo de Qualidade";
+                desc = "Seu coração bate mais forte quando dividem momentos juntos sem distrações por perto. Uma conversa boa, um passeio sem pressa e foco total um no outro é o que importa!";
+            } else if (vencedor === 'D') {
+                titulo = "🛠️ Atos de Serviço";
+                desc = "Você se sente valorizado(a) quando fazem pequenos favores práticos para te ajudar no dia a dia, como preparar um café ou resolver algo simples para te poupar tempo!";
+            } else {
+                titulo = "🤝 Toque Físico";
+                desc = "Sua linguagem do amor predominante é a proximidade física! Abraços apertados, andar de mãos dadas, cafuné e estar pertinho é a sua melhor forma de conexão.";
+            }
+
+            document.getElementById('res-quiz').innerHTML = `
+                <div class="bilhete" style="background-color: #e6fff0; border: 2px dashed green;">
+                    <p style="color: green; font-size: 20px; margin: 5px 0;">Sua Linguagem: ${titulo}</p>
+                    <p style="font-size: 14px; line-height: 1.4; color: #111;">${desc}</p>
+                    <small class="blink" style="color: green;">✨ Teste concluído com sucesso! ✨</small>
+                </div>
+            `;
+        }
+
+        // --- LÓGICA MURAL ---
+        function adicionarRecado(emoticon) {
+            document.getElementById('mural-texto').value += " " + emoticon + " ";
+        }
+
+        function postarNoMural() {
+            let nome = document.getElementById('mural-nome').value.trim() || "Anônimo";
+            let texto = document.getElementById('mural-texto').value.trim();
+            if (texto === "") { alert("Digite alguma mensagem!"); return; }
+
+            let novoRecado = document.createElement('div');
+            novoRecado.className = 'recado-item';
+            novoRecado.innerHTML = `<strong>${nome}:</strong> ${texto}`;
+            
+            let lista = document.getElementById('mural-lista');
+            lista.insertBefore(novoRecado, lista.firstChild);
+
+            document.getElementById('mural-texto').value = "";
+        }
+    </script>
+</body>
+</html>
+
