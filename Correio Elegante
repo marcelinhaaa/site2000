@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Correio Elegante 💖</title>
+    <style>
+        body {
+            background-color: #ffd1dc;
+            background-image: url('https://i.pinimg.com/originals/7f/39/1e/7f391e2e0e0ad709c8f9a23743fe1d53.gif');
+            background-repeat: repeat;
+            font-family: "Courier New", Courier, monospace;
+            color: #800020;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .rastro-coracao {
+            position: absolute;
+            font-size: 14px;
+            pointer-events: none;
+            animation: cair 1s linear forwards;
+            z-index: 9999;
+        }
+
+        @keyframes cair {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(30px) scale(0.5); opacity: 0; }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 4px double #800020;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 0 0 20px 0;
+            box-shadow: 10px 10px 0px #800020;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-topo {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-bottom: 4px double #800020;
+        }
+
+        .conteudo-titulo { padding: 15px 20px 0 20px; }
+
+        h1 {
+            color: #800020;
+            text-shadow: 2px 2px #ffb6c1;
+            font-size: 26px;
+            margin: 10px 0 5px 0;
+        }
+
+        .Abas-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            gap: 10px;
+            max-width: 95%;
+            padding: 0 10px;
+        }
+
+        .aba-btn {
+            background-color: #ffb6c1;
+            color: #800020;
+            border: 2px solid #800020;
+            padding: 8px 0;
+            font-weight: bold;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+            flex: 1;
+            min-width: 100px;
+            max-width: 120px;
+            text-align: center;
+            box-sizing: border-box;
+            box-shadow: 2px 2px 0px #800020;
+            text-decoration: none;
+        }
+
+        .aba-btn.ativa {
+            background-color: #800020;
+            color: white;
+            box-shadow: none;
+            transform: translate(2px, 2px);
+        }
+
+        .conteudo-guia {
+            min-height: 280px;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"], textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #800020;
+            background-color: #fff;
+            color: #800020;
+            font-weight: bold;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        button.acao-btn {
+            background-color: #800020;
+            color: white;
+            border: 2px solid #ffb6c1;
+            padding: 10px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 4px 4px 0px #ffb6c1;
+        }
+
+        button.acao-btn:hover {
+            background-color: #ffb6c1;
+            color: #800020;
+        }
+
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .caixa-resultado {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .bilhete {
+            background-color: #fff0f5;
+            border: 2px dashed #800020;
+            padding: 15px;
+            margin-top: 15px;
+            display: inline-block;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        .gif-final { max-width: 150px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img class="banner-topo" src="https://i.pinimg.com/1200x/22/ad/6a/22ad6ac7a3c6d50cc9d253c8d9a42290.jpg" alt="Banner Romântico Retrô">
+
+    <div class="conteudo-titulo">
+        <h1>✨ Amor 2000 ✨</h1>
+        <p class="blink" style="color: red; font-weight: bold; margin: 0;">~* Seu ponto romântico na web *~</p>
+    </div>
+
+    <div class="Abas-menu">
+        <a href="index.html" class="aba-btn">🏠Início</a>
+        <a href="calculadora.html" class="aba-btn">💘Calculadora</a>
+        <a href="biscoito.html" class="aba-btn">🥠Biscoito</a>
+        <a href="correio.html" class="aba-btn ativa">💌Correio</a>
+        <a href="quiz.html" class="aba-btn">🔮Quiz</a>
+    </div>
+
+    <hr style="border: 1px dashed #800020; margin: 0 20px;">
+
+    <div class="conteudo-guia">
+        <h3>💌 Enviar Correio Elegante 💌</h3>
+        <label for="de">De:</label><br>
+        <input type="text" id="de" placeholder="Ex: Admirador Secreto"><br>
+        <label for="para">Para:</label><br>
+        <input type="text" id="para" placeholder="Ex: Gatinho(a) da Sala"><br>
+        <label for="mensagem">Mensagem:</label><br>
+        <textarea id="mensagem" rows="2" placeholder="Escreva algo fofo..."></textarea><br>
+        <button class="acao-btn" onclick="gerarCorreio()">Gerar Bilhetinho</button>
+        <div id="res-correio" class="caixa-resultado"></div>
+    </div>
+
+    <hr style="border: 1px dashed #800020; margin: 20px 20px 0 20px;">
+    <div>
+        <img class="gif-final" src="https://i.pinimg.com/originals/a7/72/5d/a7725dcb15f32be8a0c6011788fd527f.gif" alt="Corações Piscando">
+    </div>
+</div>
+
+<script>
+    document.addEventListener('mousemove', function(e) {
+        if (Math.random() > 0.15) return;
+        let coracao = document.createElement('span');
+        coracao.className = 'rastro-coracao';
+        const simbolos = ['💖', '♥', '💋', '✨'];
+        coracao.innerText = simbolos[Math.floor(Math.random() * simbolos.length)];
+        coracao.style.left = e.pageX + 'px';
+        coracao.style.top = e.pageY + 'px';
+        document.body.appendChild(coracao);
+        setTimeout(() => { coracao.remove(); }, 1000);
+    });
+
+    function gerarCorreio() {
+        let de = document.getElementById('de').value.trim() || "Anônimo";
+        let para = document.getElementById('para').value.trim();
+        let mensagem = document.getElementById('mensagem').value.trim();
+        if (para === "") { alert("Preencha o destinatário!"); return; }
+        if (mensagem === "") { alert("Preencha a mensagem!"); return; }
+
+        document.getElementById('res-correio').innerHTML = `
+            <div class="bilhete" style="background-color: #fff0f5; border: 3px double #800020;">
+                <p><strong>De:</strong> ${de} | <strong>Para:</strong> ${para}</p>
+                <p style="background: yellow; display: inline-block; padding: 5px; color: #800020;">💘 ${mensagem} 💘</p>
+                <br>
+                <button class="acao-btn" style="font-size: 12px; padding: 5px 10px; margin-top: 10px;" onclick="baixarBilhete('${de}', '${para}', '${mensagem}')">💾 Baixar Bilhetinho</button>
+            </div>
+        `;
+    }
+
+    function baixarBilhete(de, para, mensagem) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = 500;
+        canvas.height = 250;
+
+        ctx.fillStyle = '#fff0f5';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = '#800020';
+        ctx.lineWidth = 4;
+        ctx.setLineDash([6, 4]);
+        ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+        ctx.fillStyle = '#800020';
+        ctx.font = 'bold 16px "Courier New", Courier, monospace';
+
+        ctx.fillText(`De: ${de}`, 30, 50);
+        ctx.fillText(`Para: ${para}`, 30, 80);
+
+        ctx.fillStyle = 'yellow';
+        ctx.setLineDash([]);
+        ctx.fillRect(30, 110, canvas.width - 60, 90);
+        ctx.strokeStyle = '#800020';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(30, 110, canvas.width - 60, 90);
+
+        ctx.fillStyle = '#800020';
+        ctx.font = 'bold 14px "Courier New", Courier, monospace';
+
+        const textoCompleto = `💘 ${mensagem} 💘`;
+        let linhas = [];
+        let larguraMaxima = canvas.width - 100;
+        let palavras = textoCompleto.split(' ');
+        let linhaAtual = '';
+
+        for (let n = 0; n < palavras.length; n++) {
+            let testeLinha = linhaAtual + palavras[n] + ' ';
+            let metricas = ctx.measureText(testeLinha);
+            if (metricas.width > larguraMaxima && n > 0) {
+                linhas.push(linhaAtual);
+                linhaAtual = palavras[n] + ' ';
+            } else {
+                linhaAtual = testeLinha;
+            }
+        }
+        linhas.push(linhaAtual);
+
+        let iniciarY = 145;
+        linhas.forEach((linha, index) => {
+            if (index < 3) {
+                ctx.fillText(linha.trim(), 45, iniciarY + (index * 22));
+            }
+        });
+
+        const link = document.createElement('a');
+        link.download = `correio_elegante_${para}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
+</script>
+
+</body>
+</html>
