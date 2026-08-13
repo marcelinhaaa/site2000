@@ -1,0 +1,7 @@
+CREATE TABLE contato 
+( 
+ Nome VARCHAR DEFAULT '200',  
+ Telefone VARCHAR DEFAULT '15',  
+ Gmail VARCHAR DEFAULT '100',  
+); 
+
